@@ -1,0 +1,34 @@
+version: '3.9'
+
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: smartstore-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - '3306:3306'
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/01_schema.sql:ro
+      - ./database/warehouse.sql:/docker-entrypoint-initdb.d/02_warehouse.sql:ro
+      - ./database/procedures.sql:/docker-entrypoint-initdb.d/03_procedures.sql:ro
+      - ./database/triggers.sql:/docker-entrypoint-initdb.d/04_triggers.sql:ro
+      - ./database/views.sql:/docker-entrypoint-initdb.d/05_views.sql:ro
+
+  etl:
+    build: .
+    container_name: smartstore-etl
+    env_file:
+      - .env
+    depends_on:
+      - mysql
+    volumes:
+      - ./:/app
+    command: python etl/pipeline.py
+
+volumes:
+  mysql_data:
