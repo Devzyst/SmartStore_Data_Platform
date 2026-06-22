@@ -2,7 +2,7 @@
 -- Purpose: normalized transactional tables for an e-commerce business.
 CREATE DATABASE IF NOT EXISTS smartstore;
 USE smartstore:
-  
+
 CREATE TABLE customers (
   customer_id BIGINT PRIMARY KEY AUTO_INCREMENT,
   email VARCHAR(255) NOT NULL UNIQUE,
