@@ -1,7 +1,7 @@
 -- SmartStore OLTP schema
 -- Purpose: normalized transactional tables for an e-commerce business.
 CREATE DATABASE IF NOT EXISTS smartstore;
-USE smartstore;
+USE smartstore:
 
 CREATE TABLE customers (
   customer_id BIGINT PRIMARY KEY AUTO_INCREMENT,
