@@ -18,3 +18,8 @@ def generate_orders(row_count: int = 120_000) -> pd.DataFrame:
         ),
         "total_amount": total_amount,
     })
+
+if __name__ == "__main__":
+    output = Path("generated_data/orders.csv")
+    output.parent.mkdir(parents=True, exist_ok=True)
+    generate_orders().to_csv(output, index=False)
