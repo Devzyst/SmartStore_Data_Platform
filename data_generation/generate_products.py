@@ -13,4 +13,7 @@ def generate_products(row_count: int = 5_000) -> pd.DataFrame:
         "unit_price": np.round(np.random.uniform(5, 500, size=row_count), 2),
         "cost_price": np.round(np.random.uniform(3, 300, size=row_count), 2),
     })
-
+if __name__ == "__main__":
+    output = Path("generated_data/products.csv")
+    output.parent.mkdir(parents=True, exist_ok=True)
+    generate_products().to_csv(output, index=False)
