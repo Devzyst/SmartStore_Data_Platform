@@ -10,3 +10,7 @@ def generate_payments(row_count: int = 120_000) -> pd.DataFrame:
         "payment_method": np.random.choice(["CARD", "PAYPAL", "APPLE_PAY", "BANK_TRANSFER"], size=row_count, p=[0.68, 0.18, 0.1, 0.04]),
         "payment_status": np.random.choice(["SUCCESS", "FAILED", "REFUNDED"], size=row_count, p=[0.95, 0.04, 0.01]),
     })
+if __name__ == "__main__":
+    output = Path("generated_data/payments.csv")
+    output.parent.mkdir(parents=True, exist_ok=True)
+    generate_payments().to_csv(output, index=False)
