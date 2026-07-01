@@ -4,7 +4,6 @@ from pathlib import Path
 
 import pandas as pd
 
-
 def read_csv_dataset(path: str | Path) -> pd.DataFrame:
     """Read a CSV file into a DataFrame with a clear error if it is missing."""
     csv_path = Path(path)
