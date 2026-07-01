@@ -2,7 +2,7 @@
 -- Purpose: small database automations for operational integrity and auditing.
 USE smartstore;
 DELIMITER $$
-
+  
 CREATE TRIGGER trg_reduce_inventory_after_order_item
 AFTER INSERT ON order_items
 FOR EACH ROW
