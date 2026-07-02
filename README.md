@@ -167,7 +167,7 @@ See `CONTRIBUTING.md` for the full beginner-friendly guide.
 
 ## Author
 
-Pedro Portfolio Project
+Pedro Project
 
 ## License
 
