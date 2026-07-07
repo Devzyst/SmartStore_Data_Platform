@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+        working-directory: smartstore-data-platform
+      - name: Compile Python files
+        run: python -m py_compile etl/*.py data_generation/*.py
+        working-directory: smartstore-data-platform
+      - name: Run tests
+        run: pytest -q
+        working-directory: smartstore-data-platform
+      - name: Validate SQL files exist
+        run: test -f database/schema.sql && test -f database/warehouse.sql && test -f database/views.sql
+        working-directory: smartstore-data-platform
