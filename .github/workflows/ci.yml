@@ -1,21 +1,35 @@
 name: CI
+
 on:
   push:
   pull_request:
+
 jobs:
- validate:
+  validate:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
       - name: Compile Python files
-        run: python -m py_compile etl/*.py data_generation/*.py
+        run: |
+          python -m py_compile etl/*.py
+          python -m py_compile data_generation/*.py
+
       - name: Run tests
         run: pytest -q
+
       - name: Validate SQL files exist
         run: |
           test -f database/schema.sql
