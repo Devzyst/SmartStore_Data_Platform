@@ -1,7 +1,6 @@
 -- Revenue analytics queries
 -- Purpose: executive-level KPIs and trend analysis.
 USE smartstore;
-
 -- Monthly revenue with month-over-month growth.
 WITH monthly AS (
   SELECT month_start,
