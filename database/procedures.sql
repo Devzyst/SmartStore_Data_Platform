@@ -2,7 +2,6 @@
 -- Purpose: reusable database operations that simulate backend data services.
 USE smartstore;
 DELIMITER $$
-  
 CREATE PROCEDURE create_order(
   IN p_customer_id BIGINT,
   IN p_order_date DATETIME,
