@@ -1,5 +1,4 @@
 # Database Design
-
 ## OLTP Model
 
 The transactional model is normalized around core e-commerce entities:
