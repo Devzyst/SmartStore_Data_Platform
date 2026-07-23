@@ -23,3 +23,4 @@ FROM orders
 WHERE order_status NOT IN ('CANCELLED','REFUNDED')
 GROUP BY sales_channel
 ORDER BY revenue DESC;
+
