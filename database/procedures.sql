@@ -16,7 +16,7 @@ BEGIN
   INSERT INTO orders(customer_id, order_date, order_status, sales_channel, employee_id, subtotal, shipping_amount, tax_amount, discount_amount, total_amount)
   VALUES (p_customer_id, p_order_date, 'PLACED', p_sales_channel, p_employee_id, p_subtotal, p_shipping, p_tax, p_discount, p_subtotal + p_shipping + p_tax - p_discount);
 END$$
-
+  
 CREATE PROCEDURE update_inventory(
   IN p_product_id BIGINT,
   IN p_warehouse_code VARCHAR(30),
