@@ -11,7 +11,7 @@ BEGIN
   SET quantity_on_hand = quantity_on_hand - NEW.quantity
   WHERE product_id = NEW.product_id;
 END$$
-
+  
 CREATE TRIGGER trg_audit_order_insert
 AFTER INSERT ON orders
 FOR EACH ROW
