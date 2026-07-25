@@ -5,7 +5,6 @@ from sqlalchemy import create_engine
 
 load_dotenv()
 
-
 def build_mysql_engine():
     """Create a SQLAlchemy engine from environment variables."""
     user = os.getenv("MYSQL_USER", "smartstore_user")
